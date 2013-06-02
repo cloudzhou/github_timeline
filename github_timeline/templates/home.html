@@ -6,7 +6,7 @@
 		<meta name="description" content="TimelineJS example">
 
 		<!-- jQuery -->
-		<script type="text/javascript" src="static/js/jquery.min.js"></script>
+		<script type="text/javascript" src="static/lib/jquery-min.js"></script>
 
 		<!-- BEGIN TimelineJS -->
 		<script type="text/javascript" src="static/js/storyjs-embed.js"></script>
@@ -16,7 +16,7 @@
 					type:		'timeline',
 					width:		'800',
 					height:		'600',
-					source:		'static/example_json.json',
+					source:		'getjson',
 					embed_id:	'my-timeline',
 					debug:		true
 				});
@@ -27,7 +27,14 @@
 	</head>
 
 	<body>
-
+        <div>
+            {% if user.is_authenticated %}
+            <p>欢迎 {{ user.username }}</p>
+            {% else %}
+            <p>* 使用 GitHub 网站帐号登录，无需注册</p>
+            <a href="https://github.com/login/oauth/authorize?client_id=340293efd913dc19068a"><img src="https://github.com/apple-touch-icon-114.png"></a>
+            {% endif %}
+        </div>
 		<div id="my-timeline"></div>
 
 	</body>
