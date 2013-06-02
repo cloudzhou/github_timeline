@@ -4,10 +4,10 @@
 		<meta charset="utf-8">
 		<title>jQuery Load Example Timeline</title>
 		<meta name="description" content="TimelineJS example">
-		
+
 		<!-- jQuery -->
 		<script type="text/javascript" src="static/lib/jquery-min.js"></script>
-		
+
 		<!-- BEGIN TimelineJS -->
 		<script type="text/javascript" src="static/js/storyjs-embed.js"></script>
 		<script>
@@ -23,11 +23,10 @@
 			});
 		</script>
 		<!-- END TimelineJS -->
-		
+
 	</head>
 
 	<body>
-		
         <div>
             {% if user.is_authenticated %}
             <p>欢迎 {{ user.username }}</p>
@@ -37,6 +36,6 @@
             {% endif %}
         </div>
 		<div id="my-timeline"></div>
-		
+
 	</body>
 </html>
