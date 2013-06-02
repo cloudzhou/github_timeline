@@ -28,6 +28,14 @@
 
 	<body>
 		
+        <div>
+            {% if user.is_authenticated %}
+            <p>欢迎 {{ user.username }}</p>
+            {% else %}
+            <p>* 使用 GitHub 网站帐号登录，无需注册</p>
+            <a href="https://github.com/login/oauth/authorize?client_id=340293efd913dc19068a"><img src="https://github.com/apple-touch-icon-114.png"></a>
+            {% endif %}
+        </div>
 		<div id="my-timeline"></div>
 		
 	</body>
