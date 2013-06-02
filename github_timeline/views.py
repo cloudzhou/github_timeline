@@ -5,7 +5,7 @@ from datetime import datetime
 from django.http import Http404
 from django.db import IntegrityError
 from django.shortcuts import render_to_response
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User, UserManager, check_password
 from github_timeline.settings import GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET
@@ -21,7 +21,7 @@ def login_github(request):
     (username, email) = get_github_user_meta(access_token)
     if username is None:
         return HttpResponseRedirect('/login/oauth/github/')
-    github_authenticate(username, email)
+    github_authenticate(request, username, email)
     return HttpResponseRedirect('/')
 
 def github_oauth_access_token(code):
@@ -61,7 +61,7 @@ def get_github_user_meta(access_token):
         if githup_connection: githup_connection.close()
     return None
 
-def github_authenticate(username, email):
+def github_authenticate(request, username, email, password=None):
     user = None
     try:
         user = User.objects.get(username=username)
@@ -72,7 +72,7 @@ def github_authenticate(username, email):
             print 'user IntegrityError'
     request.session.set_expiry(2592000)
     user.backend='django.contrib.auth.backends.ModelBackend'
-    auth_login(request, user)
+    login(request, user)
 
 def home(request, *args):
     return render_to_response('home.html', {})

@@ -11,21 +11,21 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gurudiggerdb',
-        'USER': 'gurudigger',
-        'PASSWORD': '123456',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',
-        'LOCATION': '127.0.0.1:11211',
-        'TIMEOUT': 1800,
-    }
-}
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',
+#         'LOCATION': '127.0.0.1:11211',
+#         'TIMEOUT': 1800,
+#     }
+# }
 KEY_PREFIX = 'gs_'
 
 TIME_ZONE = 'Asia/Shanghai'
@@ -35,7 +35,7 @@ SITE_ID = 1
 USE_I18N = False
 USE_L10N = True
 MEDIA_ROOT = '/opt/app/static/static/media/'
-MEDIA_URL = 'http://timeline4github.com/static/media'
+MEDIA_URL = '/media/'
 STATIC_ROOT = '/opt/app/static/static/'
 STATIC_URL = '/static/'
 ADMIN_MEDIA_PREFIX = '/static/admin/'
@@ -108,7 +108,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'captcha',
+#     'captcha',
     # 'django.contrib.admin',
     # 'django.contrib.admindocs',
 )
